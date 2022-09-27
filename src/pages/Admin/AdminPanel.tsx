@@ -1,13 +1,4 @@
-import {
-  Button,
-  createStyles,
-  Loader,
-  Modal,
-  ScrollArea,
-  Table,
-  Text,
-  TextInput,
-} from "@mantine/core";
+import { Button, createStyles, Modal, ScrollArea, Table } from "@mantine/core";
 import { BookDetailsAdmin } from "./BookDetailsAdmin";
 import { NavLink } from "react-router-dom";
 // import { useBooks } from "../../hooks/customHooks/useBooks";
@@ -16,8 +7,9 @@ import CreateBook from "./components/CreateBook";
 import { useBooksQuery } from "../../hooks/useBooksQuery";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import { IBook } from "../../types/IBook";
 import SearchBar from "../../components/SearchBar";
-// import { BookDetailsAdmin1 } from "./BookDetailsAdmin1";
+import useFilteredBooksSelector from "../../hooks/useFilteredBooksSelector";
 
 const useStyles = createStyles(theme => ({
   header: {
@@ -47,7 +39,11 @@ const useStyles = createStyles(theme => ({
 function AdminPanel() {
   const [opened, setOpened] = useState(false);
   // const { books, isLoading, isError } = useBooks();
-  const { isLoading, isError, data: books } = useBooksQuery();
+  const { isLoading, isError } = useBooksQuery();
+
+  // const books = useBooksSelector();
+  const filteredBooks = useFilteredBooksSelector();
+  console.log(filteredBooks);
 
   const { classes, cx } = useStyles();
   const [scrolled, setScrolled] = useState(false);
@@ -63,7 +59,9 @@ function AdminPanel() {
         <NavLink to="/Books">
           <Button color="blue.3">Books</Button>
         </NavLink>
+
         <SearchBar />
+
         <div className="modal">
           <Modal opened={opened} onClose={() => setOpened(false)} title="List a new book!">
             <CreateBook />
@@ -91,15 +89,10 @@ function AdminPanel() {
             </tr>
           </thead>
           <tbody>
-            {books.map(book => (
+            {filteredBooks.map((book: IBook) => (
               <BookDetailsAdmin key={book._uuid} book={book} />
             ))}
           </tbody>
-          {/* <tbody>
-            {books.map(book => (
-              <BookDetailsAdmin1 key={book._uuid} book={book} />
-            ))}
-          </tbody> */}
         </Table>
       </ScrollArea>
     </div>
