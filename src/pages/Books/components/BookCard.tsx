@@ -1,10 +1,10 @@
-import { createStyles, Paper, Text, Title, Button, Badge, Group } from "@mantine/core";
+import { createStyles, Paper, Text, Title, Button, Badge, Group, ThemeIcon } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { IBook } from "../../../types/IBook";
 
 const useStyles = createStyles(theme => ({
   card: {
-    height: 710,
+    height: 700,
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",

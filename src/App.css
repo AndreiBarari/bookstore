@@ -8,7 +8,7 @@
   flex-wrap: wrap;
 }
 
-.nav-bar,
+/* .nav-bar, */
 .admin-panel,
 .books-content {
   justify-content: space-between;
@@ -19,28 +19,20 @@
 .admin-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
   padding: 8px 16px;
 }
 
-.card {
-  display: flex;
-  flex-direction: row;
-}
-
-.book-details {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.card-left {
-  display: flex;
-  justify-content: center;
-}
-.card-right {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 4px 12px;
+.itemCount {
+  background-color: #d22b2b;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 5px;
+  position: absolute;
+  right: -10px;
+  top: 0;
 }

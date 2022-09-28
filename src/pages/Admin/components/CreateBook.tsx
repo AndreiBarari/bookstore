@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { useCreateBook } from "../../../hooks/customHooks/useCreateBook";
 import { useCreateBookMutation } from "../../../hooks/useCreateBookMutation";
-import { ICreateBookReq } from "../../../types/ICreateBookReq";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -22,16 +21,6 @@ const createBookSchema = z.object({
 type FormFields = z.infer<typeof createBookSchema>;
 
 function CreateBook() {
-  // const [cover, setCover] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [author, setAuthor] = useState("");
-  // const [availability, setAvailability] = useState(0);
-  // const [pages, setPages] = useState(0);
-  // const [publisher, setPublisher] = useState("");
-  // const [language, setLanguage] = useState("");
-  // const [price, setPrice] = useState(0);
-  // const [description, setDescription] = useState("");
-
   const { register, handleSubmit, reset, formState } = useForm<FormFields>({
     defaultValues: {
       cover: "",
@@ -62,15 +51,6 @@ function CreateBook() {
       },
       {
         onSuccess: () => {
-          // setCover("");
-          // setTitle("");
-          // setAuthor("");
-          // setAvailability(0);
-          // setPages(0);
-          // setPublisher("");
-          // setLanguage("");
-          // setPrice(0);
-          // setDescription("");
           reset();
         },
       }
@@ -81,10 +61,6 @@ function CreateBook() {
       {data?.items[0] && <div>You listed the book: {data.items[0].title}</div>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
-          // onChange={e => {
-          //   setCover(e.target.value);
-          // }}
-          // value={cover}
           placeholder="Cover"
           label="Cover"
           withAsterisk
@@ -93,10 +69,6 @@ function CreateBook() {
         />
         <Group>
           <TextInput
-            // onChange={e => {
-            //   setTitle(e.target.value);
-            // }}
-            // value={title}
             placeholder="Title"
             label="Title"
             withAsterisk
@@ -104,10 +76,6 @@ function CreateBook() {
             {...register("title")}
           />
           <TextInput
-            // onChange={e => {
-            //   setAuthor(e.target.value);
-            // }}
-            // value={author}
             placeholder="Author"
             label="Author"
             withAsterisk
@@ -118,10 +86,6 @@ function CreateBook() {
 
         <Group>
           <TextInput
-            // onChange={e => {
-            //   setAvailability(Number(e.target.value));
-            // }}
-            // value={availability}
             type="number"
             placeholder="#InStock"
             label="#InStock"
@@ -130,10 +94,6 @@ function CreateBook() {
             {...register("availability")}
           />
           <TextInput
-            // onChange={e => {
-            //   setPages(Number(e.target.value));
-            // }}
-            // value={pages}
             type="number"
             placeholder="#OfPages"
             label="#OfPages"
@@ -143,10 +103,6 @@ function CreateBook() {
           />
         </Group>
         <TextInput
-          // onChange={e => {
-          //   setPublisher(e.target.value);
-          // }}
-          // value={publisher}
           placeholder="Publisher"
           label="Publisher"
           withAsterisk
@@ -155,10 +111,6 @@ function CreateBook() {
         />
         <Group>
           <TextInput
-            // onChange={e => {
-            //   setLanguage(e.target.value);
-            // }}
-            // value={language}
             placeholder="Language"
             label="Language"
             withAsterisk
@@ -166,10 +118,6 @@ function CreateBook() {
             {...register("language")}
           />
           <TextInput
-            // onChange={e => {
-            //   setPrice(Number(e.target.value));
-            // }}
-            // value={price}
             type="number"
             placeholder="Price"
             label="Price"
@@ -179,10 +127,6 @@ function CreateBook() {
           />
         </Group>
         <Textarea
-          // onChange={e => {
-          //   setDescription(e.target.value);
-          // }}
-          // value={description}
           placeholder="Description"
           label="Description"
           withAsterisk

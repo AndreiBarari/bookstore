@@ -1,4 +1,4 @@
-import { Button, createStyles, Modal, ScrollArea, Table } from "@mantine/core";
+import { Button, Container, createStyles, Group, Modal, ScrollArea, Table } from "@mantine/core";
 import { BookDetailsAdmin } from "./BookDetailsAdmin";
 import { NavLink } from "react-router-dom";
 // import { useBooks } from "../../hooks/customHooks/useBooks";
@@ -12,7 +12,7 @@ import SearchBar from "../../components/SearchBar";
 import useFilteredBooksSelector from "../../hooks/useFilteredBooksSelector";
 
 const useStyles = createStyles(theme => ({
-  header: {
+  theader: {
     position: "sticky",
     top: 0,
     zIndex: 1,
@@ -41,7 +41,6 @@ function AdminPanel() {
   // const { books, isLoading, isError } = useBooks();
   const { isLoading, isError } = useBooksQuery();
 
-  // const books = useBooksSelector();
   const filteredBooks = useFilteredBooksSelector();
   console.log(filteredBooks);
 
@@ -56,9 +55,14 @@ function AdminPanel() {
   return (
     <div className="admin-panel">
       <div className="admin-header">
-        <NavLink to="/Books">
-          <Button color="blue.3">Books</Button>
-        </NavLink>
+        <Group position="apart">
+          <NavLink to="/Books">
+            <Button color="blue.3">Books</Button>
+          </NavLink>
+          <Button color="blue.3" onClick={() => setOpened(true)}>
+            List book
+          </Button>
+        </Group>
 
         <SearchBar />
 
@@ -66,14 +70,11 @@ function AdminPanel() {
           <Modal opened={opened} onClose={() => setOpened(false)} title="List a new book!">
             <CreateBook />
           </Modal>
-          <Button color="blue.3" onClick={() => setOpened(true)}>
-            List book
-          </Button>
         </div>
       </div>
       <ScrollArea sx={{ height: "94vh" }} onScrollPositionChange={({ y }) => setScrolled(y !== 0)}>
         <Table sx={{ minWidth: 700 }}>
-          <thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
+          <thead className={cx(classes.theader, { [classes.scrolled]: scrolled })}>
             <tr>
               <th>Cover</th>
               <th>Title</th>

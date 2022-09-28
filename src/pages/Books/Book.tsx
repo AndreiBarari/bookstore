@@ -9,17 +9,24 @@ import {
   Image,
   Text,
   Center,
+  Space,
 } from "@mantine/core";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import Error from "../../components/Error";
 import Loading from "../../components/Loading";
 import { useBookQuery } from "../../hooks/useBookQuery";
+import { addToCart } from "../../store/cartSlice";
 import { Rating } from "./components/Rating";
 
 const Book = () => {
   const { uuid } = useParams();
   // const { book, isError, isLoading } = useBook(uuid || "");
   const { isLoading, isError, data: book } = useBookQuery(uuid || "");
+  const dispatch = useDispatch();
+  const handleCart = () => {
+    dispatch(addToCart());
+  };
 
   if (isLoading || !book) {
     return <Loading />;
@@ -38,6 +45,8 @@ const Book = () => {
             <Card.Section>
               <Text weight={500}>{book.title}</Text>
               <Text weight={400}>by {book.author}</Text>
+              <Space h="sm" />
+              <Text weight={300}>Available in {book.language}</Text>
             </Card.Section>
           </Grid.Col>
           <Grid.Col span={6}>
@@ -54,7 +63,7 @@ const Book = () => {
           </Grid.Col>
           <Grid.Col>
             <Card.Section>
-              <Text size="sm" color="dimmed" mt="18px">
+              <Text size="sm" color="dimmed" mt="18px" style={{ wordBreak: "break-word" }}>
                 {book.description}
               </Text>
             </Card.Section>
@@ -65,11 +74,11 @@ const Book = () => {
             </Card.Section>
           </Grid.Col>
 
-          <Grid.Col span={6}>
-            <Button variant="filled" color="orange.4" mx="xs" radius="xl">
+          <Grid.Col span={6} style={{ display: "flex", gap: "12px" }}>
+            <Button variant="filled" color="orange.4" radius="xl">
               Rate
             </Button>
-            <Button variant="filled" color="blue.6" mx="xs" radius="xl">
+            <Button variant="filled" color="blue.6" radius="xl" onClick={handleCart}>
               Order
             </Button>
           </Grid.Col>
