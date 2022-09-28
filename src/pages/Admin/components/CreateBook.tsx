@@ -1,5 +1,4 @@
 import { Button, Group, Textarea, TextInput } from "@mantine/core";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { useCreateBook } from "../../../hooks/customHooks/useCreateBook";
 import { useCreateBookMutation } from "../../../hooks/useCreateBookMutation";
@@ -26,11 +25,11 @@ function CreateBook() {
       cover: "",
       title: "",
       author: "",
-      availability: "0",
-      pages: "0",
+      availability: "",
+      pages: "",
       publisher: "",
       language: "",
-      price: "0",
+      price: "",
       description: "",
     },
     mode: "onBlur",
@@ -63,7 +62,6 @@ function CreateBook() {
         <TextInput
           placeholder="Cover"
           label="Cover"
-          withAsterisk
           error={formState.errors?.cover?.message}
           {...register("cover")}
         />
@@ -71,14 +69,12 @@ function CreateBook() {
           <TextInput
             placeholder="Title"
             label="Title"
-            withAsterisk
             error={formState.errors?.title?.message}
             {...register("title")}
           />
           <TextInput
             placeholder="Author"
             label="Author"
-            withAsterisk
             error={formState.errors?.author?.message}
             {...register("author")}
           />
@@ -89,7 +85,6 @@ function CreateBook() {
             type="number"
             placeholder="#InStock"
             label="#InStock"
-            withAsterisk
             error={formState.errors?.availability?.message}
             {...register("availability")}
           />
@@ -97,7 +92,6 @@ function CreateBook() {
             type="number"
             placeholder="#OfPages"
             label="#OfPages"
-            withAsterisk
             error={formState.errors?.pages?.message}
             {...register("pages")}
           />
@@ -105,7 +99,6 @@ function CreateBook() {
         <TextInput
           placeholder="Publisher"
           label="Publisher"
-          withAsterisk
           error={formState.errors?.publisher?.message}
           {...register("publisher")}
         />
@@ -113,7 +106,6 @@ function CreateBook() {
           <TextInput
             placeholder="Language"
             label="Language"
-            withAsterisk
             error={formState.errors?.language?.message}
             {...register("language")}
           />
@@ -121,7 +113,6 @@ function CreateBook() {
             type="number"
             placeholder="Price"
             label="Price"
-            withAsterisk
             error={formState.errors?.price?.message}
             {...register("price")}
           />
@@ -129,7 +120,6 @@ function CreateBook() {
         <Textarea
           placeholder="Description"
           label="Description"
-          withAsterisk
           autosize
           minRows={3}
           maxRows={6}

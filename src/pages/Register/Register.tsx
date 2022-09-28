@@ -74,10 +74,12 @@ export function Register() {
                   ? "Already have an account? Login"
                   : "Don't have an account? Register"}
               </Anchor>
-              <Button type="submit">{upperFirst(type)}</Button>
-              <Button color="red.5" onClick={handleRedirect}>
-                Cancel
-              </Button>
+              <Group>
+                <Button type="submit">{upperFirst(type)}</Button>
+                <Button color="red.5" onClick={handleRedirect}>
+                  Cancel
+                </Button>
+              </Group>
             </Group>
           </form>
         </Paper>

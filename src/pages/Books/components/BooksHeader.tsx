@@ -1,13 +1,4 @@
-import {
-  createStyles,
-  Header,
-  Text,
-  Container,
-  Title,
-  Group,
-  ActionIcon,
-  Button,
-} from "@mantine/core";
+import { createStyles, Header, Container, Title, Group, ActionIcon } from "@mantine/core";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCartSelector } from "../../../hooks/useCartSelector";
 import { useDispatch } from "react-redux";
@@ -24,7 +15,7 @@ const useStyles = createStyles(() => ({
   header: {
     display: "flex",
     flexWrap: "wrap",
-    gap: "12px",
+    gap: "18px",
     maxWidth: "90vw",
     justifyContent: "space-between",
     alignItems: "center",
@@ -42,11 +33,10 @@ export function BooksHeader() {
   };
 
   return (
-    <Header height={HEADER_HEIGHT} mb={16} className={classes.root}>
+    <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <Title>Our shelf:</Title>
+        <Title>Our shelf</Title>
         <Group>
-          <Text>Your cart:</Text>
           <ActionIcon color="blue.8" size="lg" radius={20} variant="light" onClick={handleClear}>
             <ShoppingCartIcon />
             {cartItemsNumber === 0 ? "" : <span className="itemCount">{cartItemsNumber}</span>}

@@ -11,7 +11,7 @@ function DeleteBook({ uuid }: IDeleteBook) {
 
   const handleDelete = () => {
     mutate(uuid);
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

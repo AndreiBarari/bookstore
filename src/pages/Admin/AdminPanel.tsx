@@ -10,6 +10,7 @@ import Error from "../../components/Error";
 import { IBook } from "../../types/IBook";
 import SearchBar from "../../components/SearchBar";
 import useFilteredBooksSelector from "../../hooks/useFilteredBooksSelector";
+import AdminTableHead from "./components/AdminTableHead";
 
 const useStyles = createStyles(theme => ({
   theader: {
@@ -42,7 +43,6 @@ function AdminPanel() {
   const { isLoading, isError } = useBooksQuery();
 
   const filteredBooks = useFilteredBooksSelector();
-  console.log(filteredBooks);
 
   const { classes, cx } = useStyles();
   const [scrolled, setScrolled] = useState(false);
@@ -57,7 +57,7 @@ function AdminPanel() {
       <div className="admin-header">
         <Group position="apart">
           <NavLink to="/Books">
-            <Button color="blue.3">Books</Button>
+            <Button color="blue.3">Shelf</Button>
           </NavLink>
           <Button color="blue.3" onClick={() => setOpened(true)}>
             List book
@@ -75,19 +75,7 @@ function AdminPanel() {
       <ScrollArea sx={{ height: "94vh" }} onScrollPositionChange={({ y }) => setScrolled(y !== 0)}>
         <Table sx={{ minWidth: 700 }}>
           <thead className={cx(classes.theader, { [classes.scrolled]: scrolled })}>
-            <tr>
-              <th>Cover</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>#InStock</th>
-              <th>#Pages</th>
-              <th>Publisher</th>
-              <th>Language</th>
-              <th>Price</th>
-              <th>Description</th>
-              <th>Settings</th>
-              <th></th>
-            </tr>
+            <AdminTableHead />
           </thead>
           <tbody>
             {filteredBooks.map((book: IBook) => (

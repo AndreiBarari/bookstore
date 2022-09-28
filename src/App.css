@@ -8,7 +8,6 @@
   flex-wrap: wrap;
 }
 
-/* .nav-bar, */
 .admin-panel,
 .books-content {
   justify-content: space-between;
@@ -30,9 +29,9 @@
   background-color: #d22b2b;
   color: #fff;
   font-size: 12px;
-  border-radius: 50%;
-  padding: 2px 5px;
+  border-radius: 10px;
+  padding: 2px 4px;
   position: absolute;
-  right: -10px;
-  top: 0;
+  right: -8px;
+  top: -4px;
 }

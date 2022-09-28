@@ -1,7 +1,6 @@
 import { MantineProvider } from "@mantine/core";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import React from "react";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AppRoutes from "./AppRoutes";

@@ -1,6 +1,5 @@
 import { TextInput, Group, Textarea, Button } from "@mantine/core";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 // import { useUpdateBook } from "../../../hooks/customHooks/useUpdateBook";
 import { useUpdateBookMutation } from "../../../hooks/useUpdateBookMutation";
 import { IBook } from "../../../types/IBook";
@@ -47,7 +46,6 @@ function UpdateBook({ book }: IUpdateBook) {
           }}
           placeholder="Cover"
           label="Cover"
-          withAsterisk
           value={cover}
         />
         <Group>
@@ -57,7 +55,6 @@ function UpdateBook({ book }: IUpdateBook) {
             }}
             placeholder="Title"
             label="Title"
-            withAsterisk
             value={title}
           />
           <TextInput
@@ -66,7 +63,6 @@ function UpdateBook({ book }: IUpdateBook) {
             }}
             placeholder="Author"
             label="Author"
-            withAsterisk
             value={author}
           />
         </Group>
@@ -80,7 +76,6 @@ function UpdateBook({ book }: IUpdateBook) {
             placeholder="#InStock"
             label="#InStock"
             value={availability}
-            withAsterisk
           />
           <TextInput
             onChange={e => {
@@ -90,7 +85,6 @@ function UpdateBook({ book }: IUpdateBook) {
             placeholder="#OfPages"
             label="#OfPages"
             value={pages}
-            withAsterisk
           />
         </Group>
         <TextInput
@@ -99,7 +93,6 @@ function UpdateBook({ book }: IUpdateBook) {
           }}
           placeholder="Publisher"
           label="Publisher"
-          withAsterisk
           value={publisher}
         />
         <Group>
@@ -109,7 +102,6 @@ function UpdateBook({ book }: IUpdateBook) {
             }}
             placeholder="Language"
             label="Language"
-            withAsterisk
             value={language}
           />
           <TextInput
@@ -120,7 +112,6 @@ function UpdateBook({ book }: IUpdateBook) {
             placeholder="Price"
             label="Price"
             value={price}
-            withAsterisk
           />
         </Group>
         <Textarea
@@ -129,7 +120,6 @@ function UpdateBook({ book }: IUpdateBook) {
           }}
           placeholder="Description"
           label="Description"
-          withAsterisk
           value={description}
           autosize
           minRows={3}

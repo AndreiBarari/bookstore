@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button, Modal, Image } from "@mantine/core";
-import { useBooksQuery } from "../../hooks/useBooksQuery";
+import { Modal, Image, Group, ActionIcon } from "@mantine/core";
 import { IBook } from "../../types/IBook";
 import DeleteBook from "./components/DeleteBook";
 import UpdateBook from "./components/UpdateBook";
@@ -30,21 +29,22 @@ export function BookDetailsAdmin({ book }: IBookDetailsProps) {
       <td>{book.price}</td>
       <td style={{ minWidth: "300px", wordBreak: "break-word" }}>{book.description}</td>
       <td>
-        <Modal opened={updated} onClose={() => setUpdated(false)} title="Edit book!">
-          <UpdateBook book={book} />
-        </Modal>
-        <Button onClick={() => setUpdated(true)} color="green" radius={50} px={8} py={8}>
-          <ModeEditIcon />
-        </Button>
+        <Group style={{ minWidth: "80px" }}>
+          <Modal opened={updated} onClose={() => setUpdated(false)} title="Edit book!">
+            <UpdateBook book={book} />
+          </Modal>
+          <ActionIcon onClick={() => setUpdated(true)} color="green" radius={50} px={8} py={8}>
+            <ModeEditIcon />
+          </ActionIcon>
+          <Modal opened={deleted} onClose={() => setDeleted(false)} title={delMsg}>
+            <DeleteBook uuid={book._uuid} />
+          </Modal>
+          <ActionIcon onClick={() => setDeleted(true)} color="red" radius={50} px={8}>
+            <DeleteIcon />
+          </ActionIcon>
+        </Group>
       </td>
-      <td>
-        <Modal opened={deleted} onClose={() => setDeleted(false)} title={delMsg}>
-          <DeleteBook uuid={book._uuid} />
-        </Modal>
-        <Button onClick={() => setDeleted(true)} color="red" radius={50} px={8}>
-          <DeleteIcon />
-        </Button>
-      </td>
+      <td></td>
     </tr>
   );
 }
