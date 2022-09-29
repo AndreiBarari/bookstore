@@ -4,7 +4,9 @@ import { IBook } from "../types/IBook";
 
 const useFilteredBooksSelector = () => {
   const books = useSelector((state: RootState) =>
-    state.books.books.filter((book: IBook) => book.title.toLowerCase().includes(state.books.search))
+    state.books.books.filter((book: IBook) =>
+      book.title.toLowerCase().includes(state.books.search.toLowerCase())
+    )
   );
   return books as IBook[];
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import { Image } from "@mantine/core";
 
 function Logo() {
