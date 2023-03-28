@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-Project created for the Fortech pre-employment training program.
+Project created for the Fortech pre-employment training program. <br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
